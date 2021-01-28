@@ -15,7 +15,7 @@ echo %from%
 echo %filename%
 
 
-if exist %systemdrive%\users\%username%\documents\pythonloader\started.txt (
+if exist %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python.exe (
     goto start
 ) else (
     goto firststart
@@ -34,13 +34,15 @@ if %asw%==3 echo 3
 :firststart
 mkdir %systemdrive%\users\%username%\documents\pythonloader
 mkdir %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%
+mkdir %systemdrive%\users\%username%\documents\pythonloader\scripts
 powershell Invoke-WebRequest -Uri https://www.python.org/ftp/python/%pyver%/python-%pyver%-embed-%pybit%.zip -Outfile %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip
 powershell Expand-Archive %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip -DestinationPath %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%
 del %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip
-echo started > %systemdrive%\users\%username%\documents\pythonloader\started.txt
-powershell Invoke-WebRequest -Uri %from% -Outfile %systemdrive%\users\%username%\documents\pythonloader\scripts\%filename%
+%systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python.exe %from%
+
 cls
 echo Completed, please re-open
 :exit
 
 pause
+%systemdrive%\users\%username%\documents\pythonloader\loader.bat Hello 3.9.1 amd64 %systemdrive%\users\%username%\documents\pythonloader\scripts\hello.py hello.py 
