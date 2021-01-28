@@ -40,7 +40,7 @@ powershell Expand-Archive %systemdrive%\users\%username%\documents\pythonloader\
 del %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip
 %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python.exe %from%
 
-cls
+
 echo Completed, please re-open
 :exit
 
