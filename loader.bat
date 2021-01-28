@@ -38,7 +38,7 @@ powershell Expand-Archive %systemdrive%\users\%username%\documents\pythonloader\
 del %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip
 echo started > %systemdrive%\users\%username%\documents\pythonloader\started.txt
 powershell Invoke-WebRequest -Uri %from% -Outfile %systemdrive%\users\%username%\documents\pythonloader\scripts\%filename%
-cls
+
 echo Completed, please re-open
 :exit
 
