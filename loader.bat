@@ -23,26 +23,14 @@ if exist %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\py
 :start
 echo Launcher for %name%
 echo [1]Launch
-echo [2]Update
-echo [3]Exit
+echo [2]Exit
 set asw=0
 set /p asw="Please choose: "
 
 if %asw%==1 echo 1
 if %asw%==2 echo 2
-if %asw%==3 echo 3
 :firststart
-mkdir %systemdrive%\users\%username%\documents\pythonloader
-mkdir %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%
-mkdir %systemdrive%\users\%username%\documents\pythonloader\scripts
-powershell Invoke-WebRequest -Uri https://www.python.org/ftp/python/%pyver%/python-%pyver%-embed-%pybit%.zip -Outfile %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip
-powershell Expand-Archive %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip -DestinationPath %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%
-del %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python-%pyver%.zip
-%systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python.exe %from%
-
-
-echo Completed, please re-open
+echo went wrong
 :exit
 
 pause
-%systemdrive%\users\%username%\documents\pythonloader\loader.bat Hello 3.9.1 amd64 %systemdrive%\users\%username%\documents\pythonloader\scripts\hello.py hello.py 
