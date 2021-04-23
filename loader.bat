@@ -18,7 +18,7 @@ echo %filename%
 if exist %systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python.exe (
     goto start
 ) else (
-    goto firststart
+    goto wrong
 )
 :start
 echo Launcher for %name%
@@ -27,9 +27,12 @@ echo [2]Exit
 set asw=0
 set /p asw="Please choose: "
 
-if %asw%==1 echo 1
-if %asw%==2 echo 2
-:firststart
+if %asw%==1 goto launch
+if %asw%==2 goto exit
+:launch
+%systemdrive%\users\%username%\documents\pythonloader\python-%pyver%\python.exe %systemdrive%\users\%username%\documents\pythonloader\scripts\%filename%
+
+:wrong
 echo went wrong
 :exit
 
